@@ -1,35 +1,31 @@
 // import statement
-const { mongerInventory } = require("./fishMonger");
-
-let chefBudget = 5;
+const { chefSelections, chooseChefSelections } = require("./fishMonger");
 
 //rename to fish menu
-const fishMenu = (chefBudget) => {
-  let chefSelections = [];
+const fishMenu = (dailyPriceLimit) => {
   let fishTank = [];
-  for (const fish of mongerInventory()) {
-    // this is the mongers responsbility CALEB
-    if (fish.price <= chefBudget) {
-      fish.amount = fish.amount / 2;
-      chefSelections.push(fish);
-    }
-  }
-  console.log(`
-        <h1>Menu</h1>
-        <article class="menu">
-        `);
+
+  chooseChefSelections(dailyPriceLimit);
+
+  let currentMenu = `
+  <h1>Menu</h1>
+  <article class="menu">
+  `;
 
   chefSelections.forEach((fish) => {
     fishTank.push(fish.species);
-    console.log(`
+    currentMenu += `
           <h2>${fish.species}</h2>
           <section class="menu__item">${fish.species} Soup</section>
           <section class="menu__item">${fish.species} Sandwich</section>
           <section class="menu__item">Grilled ${fish.species}</section>
           </article>
-          `);
+          `;
   });
+
+  return currentMenu;
 };
 
 // html will create 3 different meals (per fish) - soup, sandwich and grilled dinner
-fishMenu(chefBudget);
+
+module.exports = { fishMenu };

@@ -5,11 +5,9 @@ const { boatInventory } = require("./fishingBoat");
 let mongerBudget = 7.5;
 let mongerAmount = 10;
 let mongerOptions = [];
+let chefSelections = [];
 
-//invoke boat inventory function
-boatInventory(mongerBudget, mongerAmount);
-
-// define new function mongerInventory
+// define new function mongerInventory & invoke boat inventory function
 const mongerInventory = (mongerBudget, mongerAmount) => {
   for (const fish of boatInventory()) {
     if (fish.price <= mongerBudget && fish.amount >= mongerAmount) {
@@ -19,10 +17,18 @@ const mongerInventory = (mongerBudget, mongerAmount) => {
   }
   return mongerOptions;
 };
-
-mongerInventory(mongerBudget, mongerAmount);
+// choose fish for the chef that fits the budget
+const chooseChefSelections = (dailyPriceLimit) => {
+  for (const fish of mongerInventory(mongerBudget, mongerAmount)) {
+    if (fish.price <= dailyPriceLimit) {
+      fish.amount = fish.amount / 2;
+      chefSelections.push(fish);
+    }
+  }
+};
 
 // export statements
 module.exports = {
-  mongerInventory,
+  chefSelections,
+  chooseChefSelections,
 };
