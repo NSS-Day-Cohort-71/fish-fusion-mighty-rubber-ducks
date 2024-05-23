@@ -8,15 +8,25 @@ let mongerOptions = [];
 let chefSelections = [];
 
 // define new function mongerInventory & invoke boat inventory function
+// const mongerInventory = (mongerBudget, mongerAmount) => {
+//   for (const fish of boatInventory()) {
+//     if (fish.price <= mongerBudget && fish.amount >= mongerAmount) {
+//       fish.amount = mongerAmount;
+//       mongerOptions.push(fish);
+//     }
+//   }
+//   return mongerOptions;
+// };
+
+// new map method for mongerInventory with sidekick Claude
 const mongerInventory = (mongerBudget, mongerAmount) => {
-  for (const fish of boatInventory()) {
-    if (fish.price <= mongerBudget && fish.amount >= mongerAmount) {
-      fish.amount = mongerAmount;
-      mongerOptions.push(fish);
-    }
-  }
+  const mongerOptions = boatInventory()
+    .filter((fish) => fish.price <= mongerBudget && fish.amount >= mongerAmount)
+    .map((fish) => ({ ...fish, amount: mongerAmount }));
+
   return mongerOptions;
 };
+
 // choose fish for the chef that fits the budget
 const chooseChefSelections = (dailyPriceLimit) => {
   for (const fish of mongerInventory(mongerBudget, mongerAmount)) {
