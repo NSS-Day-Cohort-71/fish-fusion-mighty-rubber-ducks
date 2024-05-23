@@ -8,20 +8,18 @@ const fishMenu = (dailyPriceLimit) => {
   chooseChefSelections(dailyPriceLimit);
 
   let currentMenu = `
-  <h1>Menu</h1>
-  <article class="menu">
-  `;
-
+<h1>Menu</h1>
+  \n<article class="menu">`;
   chefSelections.forEach((fish) => {
     fishTank.push(fish.species);
     currentMenu += `
-          <h2>${fish.species}</h2>
-          <section class="menu__item">${fish.species} Soup</section>
-          <section class="menu__item">${fish.species} Sandwich</section>
-          <section class="menu__item">Grilled ${fish.species}</section>
-          </article>
-          `;
+  <h2>${fish.species}</h2>
+  <section class="menu__item">${fish.species} Soup</section>
+  <section class="menu__item">${fish.species} Sandwich</section>
+  <section class="menu__item">Grilled ${fish.species}</section>\n`;
   });
+
+  currentMenu += `\n</article>`;
 
   return currentMenu;
 };
