@@ -14,10 +14,10 @@ It is **crucial** that your team reads all of the requirements and builds an alg
 
 ## Requirements
 
-| #   | 🐡 Fish Fusion 🍣 |
-| --- | --- |
+| #   | 🐡 Fish Fusion 🍣                                  |
+| --- | -------------------------------------------------- |
 | 1   | [The Fishing Boat](./requirements/FISHING_BOAT.md) |
-| 2   | [The Monger](./requirements/FISH_MONGER.md) |
-| 3   | [The Restaurant](./requirements/RESTAURANT.md) |
-| 4   | [Menu Example](./requirements/EXAMPLE_OUTPUT.md) |
+| 2   | [The Monger](./requirements/FISH_MONGER.md)        |
+| 3   | [The Restaurant](./requirements/RESTAURANT.md)     |
+| 4   | [Menu Example](./requirements/EXAMPLE_OUTPUT.md)   |
 | 5   | [Advanced Iteration](./requirements/MAP_METHOD.md) |
