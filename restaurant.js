@@ -8,6 +8,7 @@ const fishMenu = (chefBudget) => {
   let chefSelections = [];
   let fishTank = [];
   for (const fish of mongerInventory()) {
+    // this is the mongers responsbility CALEB
     if (fish.price <= chefBudget) {
       fish.amount = fish.amount / 2;
       chefSelections.push(fish);
