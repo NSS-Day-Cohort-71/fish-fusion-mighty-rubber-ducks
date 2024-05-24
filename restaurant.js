@@ -1,29 +1,29 @@
 // import statement
-const { chefSelections, chooseChefSelections } = require("./fishMonger");
+const { chooseChefSelections } = require("./fishMonger");
 
-//rename to fish menu
+// defining fishMenu function
 const fishMenu = (dailyPriceLimit) => {
-  let fishTank = [];
-
-  chooseChefSelections(dailyPriceLimit);
-
+  // declaring currentMenu variable as a string
   let currentMenu = `
 <h1>Menu</h1>
   \n<article class="menu">`;
-  chefSelections.forEach((fish) => {
-    fishTank.push(fish.species);
-    currentMenu += `
-  <h2>${fish.species}</h2>
-  <section class="menu__item">${fish.species} Soup</section>
-  <section class="menu__item">${fish.species} Sandwich</section>
-  <section class="menu__item">Grilled ${fish.species}</section>\n`;
-  });
 
-  currentMenu += `\n</article>`;
+  // updating the value of current menu to include
+  currentMenu += chooseChefSelections(dailyPriceLimit)
+    .map((fish) => {
+      //creating a new array from the return value of chooseChefSelections and returns a concatenated string using the map and join methods. We are using map vs. forEach, so that we don't have to alter the original array.
+      return `
+    <h2>${fish.species}</h2>
+    <section class="menu__item">${fish.species} Soup</section>
+    <section class="menu__item">${fish.species} Sandwich</section>
+    <section class="menu__item">Grilled ${fish.species}</section>\n`;
+    })
+    .join(""); // concatenating the array into a string
 
-  return currentMenu;
+  currentMenu += `\n</article>`; // further updating currentMenu
+
+  return currentMenu; // returning fully updated currentMenu
 };
 
-// html will create 3 different meals (per fish) - soup, sandwich and grilled dinner
-
+// export statement
 module.exports = { fishMenu };
