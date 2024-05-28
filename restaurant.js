@@ -11,7 +11,7 @@ const fishMenu = (dailyPriceLimit) => {
   // updating the value of current menu to include
   currentMenu += chooseChefSelections(dailyPriceLimit)
     .map((fish) => {
-      //creating a new array from the return value of chooseChefSelections and returns a concatenated string using the map and join methods. We are using map vs. forEach, so that we don't have to alter the original array.
+      //creating a new array from the return value of chooseChefSelections and returns a concatenated string using the map and join methods. We are using map vs .forEach, so that we don't have to alter the original array.
       return `
     <h2>${fish.species}</h2>
     <section class="menu__item">${fish.species} Soup</section>
